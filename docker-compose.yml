@@ -1,0 +1,49 @@
+services:
+  # 1. Database MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: car_mysql
+    restart: always  # <--- THÊM DÒNG NÀY
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: carshop
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+    networks:
+      - car-net
+
+  # 2. Car Service
+  car-service:
+    build: ./services/car-service
+    container_name: car_service_app
+    restart: always  # <--- THÊM DÒNG NÀY (Quan trọng nhất)
+    ports:
+      - "4002:4002"
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASS: root
+      DB_NAME: carshop
+      PORT: 4002
+    networks:
+      - car-net
+
+  # 3. API Gateway
+  api-gateway:
+    build: ./api-gateway
+    container_name: car_gateway
+    restart: always  # <--- THÊM DÒNG NÀY
+    ports:
+      - "8000:8000"
+    depends_on:
+      - car-service
+    networks:
+      - car-net
+
+networks:
+  car-net:
+    driver: bridge
