@@ -43,6 +43,18 @@ services:
       - car-service
     networks:
       - car-net
+      
+  # 4. Frontend ReactJS
+  frontend:
+    build: ./frontend
+    container_name: car_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    stdin_open: true  # Quan trọng cho React hot-reload
+    tty: true         # Quan trọng
+    networks:
+      - car-net
 
 networks:
   car-net:
