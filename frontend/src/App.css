@@ -80,18 +80,45 @@ ul { list-style: none; }
   background: linear-gradient(45deg, var(--primary), var(--primary-dark));
   color: white;
   padding: 1rem 3rem;
-  border-radius: 4px; /* Racing style */
+  border-radius: 4px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   display: inline-block;
   margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
   box-shadow: 0 0 20px rgba(198,40,40,0.4);
   clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
 }
+
+/* ⭐ Hiệu ứng hover sáng mạnh */
 .btn-hero:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(198,40,40,0.8);
+  box-shadow: 0 0 50px rgba(198,40,40,1);
+}
+
+/* ⭐ Ánh sáng chạy ngang khi hover */
+.btn-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.btn-hero:hover::before {
+  left: 120%;
 }
 
 /* --- Hero Section --- */
@@ -125,7 +152,7 @@ ul { list-style: none; }
 
 /* --- Sections Common --- */
 .section-padding { padding: 5rem 0; }
-.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header { text-align: center; margin-bottom: 5rem; }
 .section-header h2 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
 .section-header h2 span { color: var(--primary); }
 .section-header p { color: var(--gray); }
@@ -227,4 +254,110 @@ ul { list-style: none; }
   .detail-content { grid-template-columns: 1fr; }
   .spec-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* ========= SHOWROOM LOCATION (ON TOP) ========= */
+.showroom-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.showroom-header h3 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+/* ⭐ MAP BORDER GRADIENT — chỉ hình viền, không che map */
+.map-glow-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    padding: 10px; /* tạo khoảng trống cho border */
+    border-radius: 16px;
+}
+
+/* ⭐ Pseudo-element gradient chạy viền */
+.map-glow-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 3px; /* độ dày viền */
+    background: linear-gradient(135deg, #ff002f, #ff7a00);
+    background-size: 300% 300%;
+    animation: mapBorderMove 6s ease infinite;
+    z-index: 0; /* nằm dưới map */
+}
+
+/* ⭐ Đảm bảo iframe nằm trên pseudo-element */
+.map-glow-wrapper iframe {
+    position: relative;
+    z-index: 2;
+    border-radius: 12px;
+}
+
+/* ⭐ Animation gradient chạy */
+@keyframes mapBorderMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ========= 3 COLUMN FOOTER ========= */
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    padding-bottom: 3rem;
+}
+
+.footer-col p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.6rem;
+    color: #bbb;
+}
+
+.footer-title {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* LOGIN BUTTON */
+.btn-login {
+    color: #eee;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: 0.3s;
+    border-radius: 6px;
+}
+
+.btn-login:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(255,50,50,0.8);
+}
+
+/* REGISTER BUTTON (RACING GRADIENT) */
+.btn-register {
+    padding: 0.55rem 1.3rem;
+    border-radius: 50px;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+    box-shadow: 0 0 12px rgba(198,40,40,0.4);
+    transition: 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-register:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(198,40,40,0.9);
+    background: linear-gradient(45deg, var(--primary-dark), var(--primary));
 }

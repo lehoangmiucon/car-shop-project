@@ -35,10 +35,10 @@ const Navbar = () => {
                     <Link to="#">Services</Link>
                     <Link to="#">About</Link>
                 </div>
-                <div className="auth-buttons">
-                    <Link to="/login" style={{marginRight: '15px', fontWeight: '600'}}>Login</Link>
-                    <Link to="/register" className="btn-primary">Register</Link>
-                </div>
+                    <div className="auth-buttons">
+                        <Link to="/login" className="btn-login">Login</Link>
+                        <Link to="/register" className="btn-register">Register</Link>
+                    </div>
             </div>
         </nav>
     );
