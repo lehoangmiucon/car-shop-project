@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="container footer-content">
                 <div className="footer-col">
-                    <h3>HyperDrive.</h3>
+                    <h3>HyperDrive</h3>
                     <p>The premier destination for luxury and performance vehicles. We help you find the car of your dreams.</p>
                 </div>
                 <div className="footer-col">

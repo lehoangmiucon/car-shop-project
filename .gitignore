@@ -1,0 +1,22 @@
+# 1. Bỏ qua thư viện nặng (Quan trọng nhất)
+**/node_modules/
+
+# 2. Bỏ qua file môi trường (Chứa mật khẩu, API key - KHÔNG up lên git)
+.env
+**/.env
+
+# 3. Bỏ qua file build/dist (File rác khi build code)
+**/build/
+**/dist/
+**/coverage/
+
+# 4. Bỏ qua file rác hệ thống & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 5. Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

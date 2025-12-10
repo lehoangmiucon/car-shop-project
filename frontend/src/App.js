@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout'; // Import Layout
 import Home from './pages/Home';
 import CarList from './pages/CarList';
+import CarDetail from './pages/CarDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cars" element={<CarList />} />
+          <Route path="/cars/:id" element={<CarDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
