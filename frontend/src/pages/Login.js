@@ -6,11 +6,17 @@ import { FaTachometerAlt } from 'react-icons/fa';
 const Login = () => {
     return (
         <div className="auth-container" style={{ 
-            backgroundImage: "url('/assets/banner1.jpg')", // Dùng ảnh banner làm nền mờ
+            backgroundImage: "url('/assets/banner1.jpg')",
             backgroundSize: 'cover',
-            backgroundPosition: 'center' 
+            backgroundPosition: 'center',
+            minHeight: '100vh',
+            /* SỬA LẠI: Layout để tránh bị Navbar che */
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start', /* Căn từ trên xuống thay vì giữa */
+            paddingTop: '120px',      /* Đẩy xuống khỏi navbar */
+            position: 'relative'
         }}>
-            {/* Overlay tối */}
             <div style={{position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)'}}></div>
 
             <motion.div 
@@ -18,7 +24,15 @@ const Login = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                style={{ position: 'relative', zIndex: 1, padding: '3rem', borderRadius: '16px', maxWidth: '450px', width: '100%' }}
+                style={{ 
+                    position: 'relative', 
+                    zIndex: 1, 
+                    padding: '3rem', 
+                    borderRadius: '16px', 
+                    maxWidth: '450px', 
+                    width: '100%',
+                    marginTop: '50px' /* SỬA LẠI: Cách top thêm 50px như yêu cầu */
+                }}
             >
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <FaTachometerAlt size={40} color="#C62828" style={{ marginBottom: '10px' }} />

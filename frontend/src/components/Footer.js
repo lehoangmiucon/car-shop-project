@@ -25,7 +25,7 @@ const Footer = () => {
             {/* 3 Columns */}
             <div className="container footer-columns">
                 <div className="footer-col">
-                    <h3 className="footer-title">HyperDrive.</h3>
+                    <h3 className="footer-title">HyperDrive</h3>
                     <p>The premier destination for luxury and performance vehicles.</p>
                 </div>
                 <div className="footer-col">

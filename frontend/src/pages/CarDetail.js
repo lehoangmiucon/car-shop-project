@@ -148,9 +148,7 @@ const CarDetail = () => {
                 <div className="right-col">
                     <motion.div 
                         className="glass-panel active-border price-box"
-                        initial={{ x: 50, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.4 }}
+                        /* ... animation props ... */
                         style={{ padding: '2.5rem', borderRadius: '12px', position: 'sticky', top: '100px' }}
                     >
                         <span style={{ color: '#888', display: 'block', marginBottom: '5px' }}>Current Price</span>
@@ -158,15 +156,14 @@ const CarDetail = () => {
                             ${car.price.toLocaleString()}
                         </span>
 
-                        {/* BUTTONS */}
-                        <button className="btn-racing-red" style={{ width: '100%', marginBottom: '1rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+                        {/* BUTTON 1: Book Test Drive (Giữ nguyên class btn-buy đã update CSS) */}
+                        <button className="btn-buy" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
                             Book Test Drive
                         </button>
-                        <button style={{ 
-                            width: '100%', padding: '12px', background: 'transparent', 
-                            border: '1px solid #555', color: 'white', fontWeight: '700', 
-                            textTransform: 'uppercase', borderRadius: '4px', cursor: 'pointer' 
-                        }}>
+
+                        {/* BUTTON 2: Contact Sales - SỬA LẠI ở đây */}
+                        {/* Xóa style inline cũ, dùng class btn-contact */}
+                        <button className="btn-contact">
                             Contact Sales
                         </button>
 

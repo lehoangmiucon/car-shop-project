@@ -27,7 +27,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h1>Unleash The<br/>Speed Demon</h1>
-            <p>Experience the thrill of driving the world's most exclusive supercars.</p>
+            <p>Experience the thrill of driving the world's most exclusive supercars</p>
             <Link to="/cars" className="btn-hero">Explore Inventory</Link>
           </motion.div>
         </div>

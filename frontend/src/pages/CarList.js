@@ -34,7 +34,7 @@ const CarList = () => {
       </div>
 
       {visible < cars.length && (
-        <div className="load-more-container" style={{textAlign: 'center', marginTop: '4rem'}}>
+        <div className="load-more-container" style={{textAlign: 'center', marginTop: '4rem', marginBottom: '4rem'}}>
             <button onClick={loadMore} className="btn-racing-red">
                 Load More Cars
             </button>

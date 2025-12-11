@@ -42,10 +42,7 @@ const Navbar = () => {
                 </div>
                 <div className="auth-buttons" style={{ display: 'flex', gap: '15px' }}>
                     {/* Nút Login - Outline */}
-                    <Link to="/login" 
-                        style={{ ...authBtnStyle, border: '1px solid rgba(255,255,255,0.3)' }}
-                        className="btn-login-hover"
-                    >
+                    <Link to="/login" className="btn-racing-red" style={{ padding: '8px 24px', fontSize: '0.85rem' }}>
                         Login
                     </Link>
                     

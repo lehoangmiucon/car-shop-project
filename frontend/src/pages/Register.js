@@ -10,9 +10,11 @@ const Register = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             minHeight: '100vh',
+            /* SỬA LẠI: Layout padding top */
             display: 'flex',
-            alignItems: 'center',
             justifyContent: 'center',
+            alignItems: 'flex-start',
+            paddingTop: '120px', 
             position: 'relative'
         }}>
             <div style={{position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)'}}></div>
@@ -22,7 +24,15 @@ const Register = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                style={{ position: 'relative', zIndex: 1, padding: '3rem', borderRadius: '16px', maxWidth: '450px', width: '100%' }}
+                style={{ 
+                    position: 'relative', 
+                    zIndex: 1, 
+                    padding: '3rem', 
+                    borderRadius: '16px', 
+                    maxWidth: '450px', 
+                    width: '100%',
+                    marginTop: '50px' /* Cách top 50px */
+                }}
             >
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <FaUserPlus size={40} color="#C62828" style={{ marginBottom: '10px' }} />
