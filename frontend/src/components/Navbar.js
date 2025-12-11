@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaTachometerAlt } from 'react-icons/fa'; // Icon tốc độ
+import { FaTachometerAlt } from 'react-icons/fa';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
-    // Hiệu ứng đổi màu khi scroll
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+            setScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Nếu không phải trang Home, luôn hiện background đen
     const isHome = location.pathname === '/';
     const navbarClass = `navbar ${scrolled || !isHome ? 'scrolled' : ''}`;
+
+    // Style chung cho nút Auth
+    const authBtnStyle = {
+        padding: '8px 20px',
+        borderRadius: '4px',
+        fontWeight: '700',
+        transition: 'all 0.3s ease',
+        textTransform: 'uppercase',
+        fontSize: '0.85rem',
+        border: '1px solid transparent'
+    };
 
     return (
         <nav className={navbarClass}>
@@ -35,10 +40,20 @@ const Navbar = () => {
                     <Link to="#">Services</Link>
                     <Link to="#">About</Link>
                 </div>
-                    <div className="auth-buttons">
-                        <Link to="/login" className="btn-login">Login</Link>
-                        <Link to="/register" className="btn-register">Register</Link>
-                    </div>
+                <div className="auth-buttons" style={{ display: 'flex', gap: '15px' }}>
+                    {/* Nút Login - Outline */}
+                    <Link to="/login" 
+                        style={{ ...authBtnStyle, border: '1px solid rgba(255,255,255,0.3)' }}
+                        className="btn-login-hover"
+                    >
+                        Login
+                    </Link>
+                    
+                    {/* Nút Register - Red Racing */}
+                    <Link to="/register" className="btn-racing-red" style={{ padding: '8px 24px', fontSize: '0.85rem' }}>
+                        Register
+                    </Link>
+                </div>
             </div>
         </nav>
     );

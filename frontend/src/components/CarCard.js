@@ -20,7 +20,7 @@ const CarCard = ({ car }) => {
         <h3 className="car-name">{car.name}</h3>
         <p className="car-price">${car.price.toLocaleString()}</p>
         <Link to={`/cars/${car.id}`}>
-          <button className="btn-view">View Specs</button>
+          <button className="btn-view">View Detail</button>
         </Link>
       </div>
     </motion.div>
