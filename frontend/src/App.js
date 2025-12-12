@@ -6,6 +6,8 @@ import CarList from './pages/CarList';
 import CarDetail from './pages/CarDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Services from './pages/Services';
+import About from './pages/About';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/cars/:id" element={<CarDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </MainLayout>
     </Router>

@@ -37,8 +37,8 @@ const Navbar = () => {
                 <div className="nav-links">
                     <Link to="/">Home</Link>
                     <Link to="/cars">Inventory</Link>
-                    <Link to="#">Services</Link>
-                    <Link to="#">About</Link>
+                    <Link to="services">Services</Link>
+                    <Link to="about">About</Link>
                 </div>
                 <div className="auth-buttons" style={{ display: 'flex', gap: '15px' }}>
                     {/* Nút Login - Outline */}

@@ -10,7 +10,7 @@ const Home = () => {
       <div 
         className="hero-section"
         style={{
-            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(198,40,40,0.2) 100%), url('/assets/banner1.jpg')`,
+            backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(198,40,40,0.2) 100%), url('/banner1.jpg')`,
             backgroundAttachment: 'fixed', // Giữ ảnh đứng yên khi scroll
             backgroundPosition: 'center',
             backgroundSize: 'cover',

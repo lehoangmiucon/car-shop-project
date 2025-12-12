@@ -575,3 +575,162 @@ ul { list-style: none; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* ============ SERVICES PAGE STYLES ============ */
+.page-hero {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), #0D0D0D);
+}
+.hero-content-center {
+    position: relative; z-index: 2;
+}
+.hero-content-center h1 {
+    font-size: 4rem; text-transform: uppercase; font-weight: 800;
+}
+.hero-subtitle {
+    font-size: 1.5rem; color: #ccc; margin-bottom: 2rem;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.service-card {
+    padding: 2.5rem;
+    text-align: center;
+    transition: 0.3s;
+}
+.service-icon {
+    font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem;
+}
+.service-card h3 {
+    font-size: 1.5rem; margin-bottom: 1rem; color: white;
+}
+.service-card p { color: #888; }
+
+/* Pricing Tables */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: center; /* Để card giữa nổi lên */
+}
+.pricing-card {
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    border-radius: 12px;
+}
+.pricing-card.featured {
+    border: 1px solid var(--primary);
+    transform: scale(1.05);
+    background: rgba(198, 40, 40, 0.05);
+    box-shadow: 0 0 30px rgba(198,40,40,0.15);
+    z-index: 2;
+}
+.pricing-card .price {
+    font-size: 3rem; font-weight: 800; margin: 1.5rem 0; color: white;
+}
+.pricing-card ul { margin-bottom: 2rem; text-align: left; padding-left: 1rem;}
+.pricing-card ul li {
+    margin-bottom: 0.8rem; color: #ccc; display: flex; align-items: center; gap: 10px;
+}
+.pricing-card ul li.disabled { color: #444; text-decoration: line-through; }
+.pricing-card .badge {
+    position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+    background: var(--primary); color: white; padding: 5px 15px;
+    border-radius: 20px; font-size: 0.8rem; font-weight: bold;
+}
+.btn-outline {
+    background: transparent; border: 1px solid #555; color: white;
+    padding: 10px 25px; border-radius: 4px; cursor: pointer; transition: 0.3s;
+    text-transform: uppercase; font-weight: 600;
+}
+.btn-outline:hover { border-color: white; background: white; color: black; }
+
+/* Booking Form */
+.booking-wrapper {
+    max-width: 800px; margin: 0 auto; padding: 3rem; border-radius: 16px;
+}
+.booking-form {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+}
+.booking-form label { display: block; margin-bottom: 8px; color: #ccc; }
+
+/* ============ ABOUT PAGE STYLES ============ */
+.about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.about-img-wrapper { position: relative; }
+.about-img { width: 100%; border-radius: 12px; filter: grayscale(20%); }
+.exp-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--primary); padding: 1.5rem; text-align: center;
+    color: white; border-radius: 12px; font-weight: bold;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.exp-badge span { font-size: 2.5rem; display: block; line-height: 1; }
+
+.timeline { border-left: 2px solid #333; padding-left: 2rem; margin-left: 1rem; }
+.timeline-item { position: relative; margin-bottom: 2rem; }
+.timeline-item::before {
+    content: ''; position: absolute; left: -2.6rem; top: 5px;
+    width: 15px; height: 15px; background: var(--primary);
+    border-radius: 50%; border: 3px solid #0D0D0D;
+}
+.timeline-item .year { color: var(--primary); font-weight: bold; font-size: 1.1rem; }
+
+.mv-card {
+    padding: 3rem; text-align: center;
+}
+.mv-card h3 { margin: 1rem 0; color: white; font-size: 1.5rem; }
+
+/* Team */
+.team-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.team-card { background: #151515; border-radius: 12px; overflow: hidden; }
+.team-img img { width: 100%; height: 350px; object-fit: cover; transition: 0.5s; filter: grayscale(50%); }
+.team-card:hover .team-img img { filter: grayscale(0); transform: scale(1.05); }
+.team-info { padding: 1.5rem; text-align: center; border-top: 3px solid var(--primary); }
+.team-info h3 { color: white; margin-bottom: 5px; }
+.team-info p { color: #888; font-size: 0.9rem; text-transform: uppercase; }
+
+/* Mobile Responsive Additions */
+@media (max-width: 768px) {
+    .pricing-grid, .booking-form, .about-grid, .team-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-content-center h1 { font-size: 2.5rem; }
+}
+
+/* Animations Keyframes */
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+.spin-icon { animation: spin 2s linear infinite; }
+.revving { background: linear-gradient(135deg, #ff9800, #ff5722) !important; color: white; }
+
+/* FIX LỖI OPTION SELECT BỊ TRẮNG */
+select.input-premium option {
+    background-color: #1a1a1a; /* Nền đen xám cho option */
+    color: white;              /* Chữ trắng */
+    padding: 10px;
+}
+
+/* Đảm bảo khi dropdown xổ xuống nó đẹp hơn */
+select.input-premium:focus {
+    border-color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
