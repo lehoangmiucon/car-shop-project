@@ -31,7 +31,7 @@ const Login = () => {
                     borderRadius: '16px', 
                     maxWidth: '450px', 
                     width: '100%',
-                    marginTop: '50px' /* SỬA LẠI: Cách top thêm 50px như yêu cầu */
+                    marginTop: '30px'
                 }}
             >
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -50,7 +50,11 @@ const Login = () => {
                         <input type="password" placeholder="••••••••" className="input-premium" />
                     </div>
                     
-                    <button type="submit" className="btn-racing-red" style={{ width: '100%', marginTop: '1rem' }}>
+                    <button 
+                        type="submit" 
+                        className="btn-racing-red" 
+                        style={{ width: '80%', display: 'block', margin: '1rem auto' }}
+                    >
                         Access Account
                     </button>
                 </form>

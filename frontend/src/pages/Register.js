@@ -31,13 +31,14 @@ const Register = () => {
                     borderRadius: '16px', 
                     maxWidth: '450px', 
                     width: '100%',
-                    marginTop: '50px' /* Cách top 50px */
+                    marginTop: '5px',
+                    marginBottom: '60px'
                 }}
             >
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <FaUserPlus size={40} color="#C62828" style={{ marginBottom: '10px' }} />
                     <h2 style={{ fontSize: '2rem', fontWeight: '800' }}>Join The Club</h2>
-                    <p style={{ color: '#888' }}>Experience the pinnacle of automotive excellence</p>
+                    <p style={{ color: '#888' }}>Experience premium automotive quality</p>
                 </div>
 
                 <form>
@@ -54,7 +55,11 @@ const Register = () => {
                         <input type="password" placeholder="••••••••" className="input-premium" />
                     </div>
                     
-                    <button type="submit" className="btn-racing-red" style={{ width: '100%', marginTop: '1rem' }}>
+                    <button 
+                        type="submit" 
+                        className="btn-racing-red" 
+                        style={{ width: '80%', display: 'block', margin: '1rem auto' }}
+                    >
                         Create Membership
                     </button>
                 </form>
