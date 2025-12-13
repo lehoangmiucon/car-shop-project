@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom'; // <--- FIX 1: Thêm useNavigate
 import { getCarById, getCars } from '../services/api';
 import CarCard from '../components/CarCard';
 import { motion } from 'framer-motion';
@@ -7,27 +7,27 @@ import { FaTachometerAlt, FaCogs, FaGasPump, FaRoad, FaVolumeUp, FaStop, FaCheck
 
 const CarDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // <--- FIX 2: Khai báo hàm navigate
   const [car, setCar] = useState(null);
   const [relatedCars, setRelatedCars] = useState([]);
   const [heroImage, setHeroImage] = useState('');
   const [activeColor, setActiveColor] = useState('red');
   const [isPlaying, setIsPlaying] = useState(false);
   
-  // Dùng useRef để giữ instance của Audio, giúp kiểm soát nó qua các lần render/unmount
+  // Dùng useRef để giữ instance của Audio
   const audioRef = useRef(null);
 
-  // --- HÀM TẠO THÔNG SỐ RIÊNG CHO TỪNG XE (MOCKUP THÔNG MINH) ---
-  // Vì DB chưa có cột specs, ta tạo dựa trên ID để mỗi xe có số khác nhau
+  // --- HÀM TẠO THÔNG SỐ RIÊNG CHO TỪNG XE ---
   const generateSpecs = (carData) => {
     if (!carData) return {};
-    const baseHp = 500 + (carData.id * 15); // ID càng lớn HP càng cao (ví dụ)
+    const baseHp = 500 + (carData.id * 15); 
     return {
       hp: `${baseHp} HP`,
       torque: `${600 + (carData.id * 10)} Nm`,
       topSpeed: `${180 + (carData.id * 2)} mph`,
       engine: carData.brand === 'Tesla' || carData.brand === 'Lucid' ? 'Electric Motor' : (carData.id % 2 === 0 ? '4.0L V8 Twin-Turbo' : '5.2L V10 N/A'),
       transmission: carData.brand === 'Tesla' ? '1-Speed' : '7-Speed DCT',
-      accel: `2.${9 - (carData.id % 5)}s` // 0-60mph
+      accel: `2.${9 - (carData.id % 5)}s` 
     };
   };
 
@@ -46,7 +46,7 @@ const CarDetail = () => {
     };
     fetchData();
 
-    // Cleanup function: Chạy khi component bị hủy (chuyển trang)
+    // Cleanup function: Tắt âm thanh khi rời trang
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -57,7 +57,6 @@ const CarDetail = () => {
 
   // --- XỬ LÝ ÂM THANH ---
   const handleAudio = () => {
-    // Nếu đang chơi thì bấm là STOP
     if (isPlaying) {
         if (audioRef.current) {
             audioRef.current.pause();
@@ -71,7 +70,6 @@ const CarDetail = () => {
     
     const soundPath = `/sounds/${car.brand.toLowerCase()}.mp3`; 
     
-    // Tạo Audio mới nếu chưa có hoặc file thay đổi
     if (!audioRef.current || audioRef.current.src !== window.location.origin + soundPath) {
         audioRef.current = new Audio(soundPath);
     }
@@ -80,9 +78,8 @@ const CarDetail = () => {
     
     audioRef.current.play()
       .then(() => {
-        // Tự động tắt sau 8 giây như yêu cầu
         setTimeout(() => {
-            if (audioRef.current) { // Check lại coi user có chuyển trang chưa
+            if (audioRef.current) { 
                 audioRef.current.pause();
                 audioRef.current.currentTime = 0;
                 setIsPlaying(false);
@@ -91,7 +88,7 @@ const CarDetail = () => {
       })
       .catch((err) => {
         console.error("Audio Error:", err);
-        alert(`Vroom! (Chưa có file âm thanh cho ${car.brand}. Ní nhớ chép file vào public/sounds/${car.brand.toLowerCase()}.mp3 nhé!)`);
+        alert(`Vroom! (Chưa có file âm thanh cho ${car.brand}. Cần chép file vào public/sounds/${car.brand.toLowerCase()}.mp3)`);
         setIsPlaying(false);
       });
   };
@@ -107,7 +104,7 @@ const CarDetail = () => {
         <p className="breadcrumb">Home / Cars / <span>{car.name}</span></p>
       </div>
 
-      {/* 2. PREMIUM HERO SECTION */}
+      {/* 2. HERO SECTION */}
       <motion.div 
         className="detail-hero"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -135,7 +132,7 @@ const CarDetail = () => {
               {car.name}
             </h1>
             
-            {/* NÚT NGHE TIẾNG PÔ (START / STOP) */}
+            {/* NÚT NGHE TIẾNG PÔ */}
             <button 
                 className={`btn-racing-red ${isPlaying ? 'revving' : ''}`} 
                 onClick={handleAudio}
@@ -166,7 +163,6 @@ const CarDetail = () => {
           </div>
 
           <h3 style={{ color: 'white', marginBottom: '1.5rem', borderLeft: '4px solid #C62828', paddingLeft: '10px' }}>Performance Highlights</h3>
-          {/* HIỂN THỊ THÔNG SỐ RIÊNG */}
           <div className="spec-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '15px', marginBottom: '3rem' }}>
             {[
               { icon: <FaTachometerAlt />, label: 'Horsepower', val: specs.hp },
@@ -217,8 +213,20 @@ const CarDetail = () => {
               ${car.price.toLocaleString()}
             </span>
 
-            <button className="btn-buy">Book Test Drive</button>
-            <button className="btn-contact">Contact Sales</button>
+            {/* --- FIX 3: NÚT BOOK TEST DRIVE ĐÃ SỬA LỖI --- */}
+            <button 
+                className="btn-buy"
+                onClick={() => navigate('/test-drive', { state: { car: car } })} 
+            >
+                Book Test Drive
+            </button>
+
+            <button 
+                className="btn-contact"
+                onClick={() => navigate('/contact-sales', { state: { car: car } })} // <-- ĐÃ SỬA
+            >
+                Contact Sales
+            </button>
 
             <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
               <p style={{ color: '#ccc', marginBottom: '10px', fontSize: '0.9rem' }}>Exterior Color</p>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout'; // Import Layout
+import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import CarList from './pages/CarList';
 import CarDetail from './pages/CarDetail';
@@ -8,6 +8,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Services from './pages/Services';
 import About from './pages/About';
+import Contact from './pages/Contact';
+import TestDrive from './pages/TestDrive';
+import BookingSuccess from './pages/BookingSuccess';
+import ContactSales from './pages/ContactSales';
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/test-drive" element={<TestDrive />} />
+          <Route path="/booking-success" element={<BookingSuccess />} />
+          <Route path="/contact-sales" element={<ContactSales />} />
         </Routes>
       </MainLayout>
     </Router>

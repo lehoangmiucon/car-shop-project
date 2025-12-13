@@ -39,6 +39,7 @@ const Navbar = () => {
                     <Link to="/cars">Inventory</Link>
                     <Link to="services">Services</Link>
                     <Link to="about">About</Link>
+                    <Link to="/contact">Contact</Link>
                 </div>
                 <div className="auth-buttons" style={{ display: 'flex', gap: '15px' }}>
                     {/* Nút Login - Outline */}
